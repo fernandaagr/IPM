@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<meta charset="UTF-8"/>
 <head>
 <title>IPM</title>
 <!--<link rel="stylesheet" href="style.css">-->
@@ -25,7 +26,7 @@
   			
   	}else if(clicked === 'student2'){
   		if (id.getAttribute('src') == clicked+".png") {
-  			id.src = 'fernanda2.jpg';
+  			id.src = 'Joao.jpg';
   			console.log("2");
   		}else{
   			id.src = clicked+".png";
@@ -33,7 +34,7 @@
   		}
   	}else{
   		if (id.getAttribute('src') == clicked+".png") {
-  			id.src = 'fernanda2.jpg';
+  			id.src = 'istid2.jpeg';
   			console.log("3");
   		}else{
   			id.src = clicked+".png";
@@ -56,7 +57,7 @@
   <tr>
     <td width="33%">Fernanda Rodrigues</td>
     <td width="33%">João Pedro</td> 
-    <td width="33%">Luana Ascensão</td>
+    <td width="33%">Luana Marques</td>
     </tr>
     <tr>
     <td>91671</td>
@@ -64,9 +65,9 @@
     <td>82374</td>
   </tr>
   <tr>
-    <td><img id="student1" src = "student1.png" width="98" onclick="changeImage(this.id)"></td>
-    <td><img id="student2" src = "student2.png" width="100" onclick="changeImage(this.id)"></td> 
-    <td><img id="student3" src = "student3.png" width="90" onclick="changeImage(this.id)"></td>
+    <td><img id="student1" src = "fernanda2.jpg" width="98" onclick="changeImage(this.id)"></td>
+    <td><img id="student2" src = "Joao.jpg" width="100" onclick="changeImage(this.id)"></td> 
+    <td><img id="student3" src = "istid2.jpeg" width="90" onclick="changeImage(this.id)"></td>
   </tr>
 </table>
 
