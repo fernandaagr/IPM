@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
+	
+<!--script src="iGo.js"></script-->
+
+
 <head>
 	<meta charset="utf-8">
 	<title>iGo - Prototype</title>
 	<link rel="stylesheet" type="text/css" href="iGo_Home.css">
-	
+
 	<https://fonts.google.com/?selection.family=Noto+Sans>
 	<https://fonts.google.com/?selection.family=Ubuntu>
 	<https://fonts.google.com/?selection.family=Muli>
@@ -13,11 +17,95 @@
 	<https://fonts.google.com/?selection.family=Titillium+Web>
 	<https://fonts.google.com/?selection.family=Ubuntu>
 
+	<!--Código CSS vai aqui-->
+	<style type="text/css">
+		#display{
+			height: 5.382cm;
+			width: 10.7763cm;
+			border-radius:
+			font-family: "Ubuntu";
+			font-size: 38px;
+			background: linear-gradient(to bottom, #99e6e6, #85e085);
+			/* background-color: #99e6e6; */
+			align-self: center;
+			position: relative;
+			border-radius: 5px;
+			margin: 
+		}
+
+		#clock_display{
+			font-size: 80px;
+			position: relative;
+		}
+
+		.status_bar {
+			height: 25px;
+			margin: 0 ;
+			border-top-left-radius:15px;
+			border-top-right-radius:15px;
+			background: black;
+
+			font-size: 10px;
+			padding: 0px;
+			vertical-align: middle;
+		}
+	</style>
+
+	<!--Código JavaScript vai aqui-->
+	<script type="text/javascript">
+		var display_element;
+
+		var tNow;
+		var tMin;
+		var tHour;
+
+		function start_time(){
+			var today = new Date();
+			var h = today.getHours();
+			var m = today.getMinutes();
+
+			h = checkTime(h);
+			m = checkTime(m);
+
+			document.getElementById("clock_display").innerHTML = h + ":" + m;
+			tNow = m + h*100;
+			console.log("tNow = m + h*100 ="+ tNow);
+
+			tHour = h;
+			tMin = m;
+			var t = setTimeout(start_time, 500);
+		}
+
+		function checkTime(i) {
+		    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+		    return i;
+		}
+
+		function start_display(){
+			display_element = document.getElementById("display");
+			start_time();
+		}
+	</script>
+	<!--Mensagem alternativa ao código JS-->
+	<noscript>Sorry, your browser does not support JavaScript!</noscript>
+
 </head>
-<body onload="">
+<body onload="start_display()">
 	<h1 id="Homepage" align="center">iGo - Homepage</h1>
 
-	<div id="display"></div>
+	<!--Visor -->
+	<div id="display">
+		<!--Ecrã atual-->
+		<div id="onScreen">
+			<div id="status_bar" class="status_bar">
+ 				<img id="battery" src="iphone-battery-icon.ico"/>
+ 			</div>	
+
+ 			<div id="clock_display" align="center"></div>
+
+		</div>
+	</div>
+
 	
 </body>
 </html>
