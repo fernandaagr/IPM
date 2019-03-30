@@ -5,32 +5,33 @@
 
 
 <head>
-	<meta charset="utf-8">
-	<title>iGo - Prototype</title>
-	<link rel="stylesheet" type="text/css" href="iGo_Home.css">
+	<meta charset="utf-8">	
+	<link href='https://fonts.google.com/?selection.family=Ubuntu' rel='stylesheet'>
 
-	<https://fonts.google.com/?selection.family=Noto+Sans>
+	<title style="font-family: Ubuntu">iGo - Prototype</title>
+	<!--link rel="stylesheet" type="text/css" href="iGo_Home.css"-->
+
+	<!--https://fonts.google.com/?selection.family=Noto+Sans>
 	<https://fonts.google.com/?selection.family=Ubuntu>
 	<https://fonts.google.com/?selection.family=Muli>
 	<https://fonts.google.com/?selection.family=PT+Sans>
 	<https://fonts.google.com/?selection.family=Poppins>
-	<https://fonts.google.com/?selection.family=Titillium+Web>
-	<https://fonts.google.com/?selection.family=Ubuntu>
+	<https://fonts.google.com/?selection.family=Titillium+Web-->
 
 	<!--Código CSS vai aqui-->
 	<style type="text/css">
 		#display{
 			height: 5.382cm;
 			width: 10.7763cm;
-			border-radius:
-			font-family: "Ubuntu";
+			font-family: Ubuntu;
+			font-style: medium;
 			font-size: 38px;
 			background: linear-gradient(to bottom, #99e6e6, #85e085);
 			/* background-color: #99e6e6; */
 			align-self: center;
 			position: relative;
 			border-radius: 5px;
-			margin: 
+			z-index: -1;
 		}
 
 		#clock_display{
@@ -38,16 +39,28 @@
 			position: relative;
 		}
 
+		#battery{
+			max-width:100%;
+			max-height:100%;
+			display: block;
+			margin: auto;
+			float: right;
+			padding-right: 20px;
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+			z-index: 1;
+
+		}
 		.status_bar {
 			height: 25px;
 			margin: 0 ;
-			border-top-left-radius:15px;
-			border-top-right-radius:15px;
+			border-top-left-radius:5px;
+			border-top-right-radius:5px;
 			background: black;
-
-			font-size: 10px;
 			padding: 0px;
 			vertical-align: middle;
+			z-index: -1;
 		}
 	</style>
 
@@ -97,8 +110,9 @@
 	<div id="display">
 		<!--Ecrã atual-->
 		<div id="onScreen">
+
 			<div id="status_bar" class="status_bar">
- 				<img id="battery" src="iphone-battery-icon.ico"/>
+ 				<img id="battery" src="imagens_icons/icons8-phone-battery-full-50-2.png" alt="icon_bateria" />
  			</div>	
 
  			<div id="clock_display" align="center"></div>
