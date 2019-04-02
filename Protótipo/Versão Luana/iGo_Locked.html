@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	
+<!--script src="iGo.js"></script-->
+
+
+<head>
+	<meta charset="utf-8">	
+
+	<title style="font-family: Verdana">iGo - Prototype</title>
+	<link rel="stylesheet" type="text/css" href="main_stylesheet.css">
+
+	<!--Código CSS vai aqui-->
+	<style type="text/css">
+
+		#clock_display{
+			font-size: 80px;
+			position: relative;
+		}
+
+	</style>
+
+	<!--Código JavaScript vai aqui-->
+	<script type="text/javascript">
+		var display_element;
+
+		var tNow;
+		var tMin;
+		var tHour;
+
+		function start_time(){
+			var today = new Date();
+			var h = today.getHours();
+			var m = today.getMinutes();
+			var day = today.getDate();
+			var day_index = today.getDay();
+			var month_index = today.getMonth();
+			var days = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+			var months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+			h = checkTime(h);
+			m = checkTime(m);
+
+			document.getElementById("clock_display").innerHTML = h + ":" + m;
+			document.getElementById("status_bar_clock").innerHTML = h + ":" + m;
+			document.getElementById("date_row").innerHTML = days[day_index] + ", " + day + " de " + months[month_index];
+
+			//tNow = m + h*100;
+			//tHour = h;
+			//tMin = m;
+			var t = setTimeout(start_time, 500);
+		}
+
+		function checkTime(i) {
+		    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+		    return i;
+		}
+
+		function start_display(){
+			display_element = document.getElementById("display");
+			start_time();
+		}
+	</script>
+	<!--Mensagem alternativa ao código JS-->
+	<noscript>Sorry, your browser does not support JavaScript!</noscript>
+
+</head>
+<body onload="start_display()">
+	<h1 id="Homepage" align="center">iGo - Homepage</h1>
+
+	<!--Visor -->
+	<div id="display">
+		<!--Ecrã atual-->
+		<div id="onScreen">
+
+			<div id="status_bar" class="status_bar">
+ 				<img id="battery" src="../imagens_icons/icons8-phone-battery-full-50-2.png" alt="icon_bateria" />
+ 			</div>	
+
+ 			<div id="clock_display" align="center"></div>
+
+		</div>
+	</div>
+
+	
+</body>
+</html>

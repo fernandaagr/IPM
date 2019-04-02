@@ -6,85 +6,102 @@
 
 <head>
 	<meta charset="utf-8">	
-	<link href='https://fonts.google.com/?selection.family=Ubuntu' rel='stylesheet'>
 
-	<title style="font-family: Ubuntu">iGo - Prototype</title>
-	<!--link rel="stylesheet" type="text/css" href="iGo_Home.css"-->
-
-	<!--https://fonts.google.com/?selection.family=Noto+Sans>
-	<https://fonts.google.com/?selection.family=Ubuntu>
-	<https://fonts.google.com/?selection.family=Muli>
-	<https://fonts.google.com/?selection.family=PT+Sans>
-	<https://fonts.google.com/?selection.family=Poppins>
-	<https://fonts.google.com/?selection.family=Titillium+Web-->
+	<title style="font-family: Verdana">iGo - Prototype</title>
+	<link rel="stylesheet" type="text/css" href="main_stylesheet.css">
 
 	<!--Código CSS vai aqui-->
 	<style type="text/css">
-		#display{
-			height: 5.382cm;
-			width: 10.7763cm;
-			font-family: Ubuntu;
-			font-style: medium;
-			font-size: 38px;
-			background: linear-gradient(to bottom, #99e6e6, #85e085);
-			/* background-color: #99e6e6; */
-			align-self: center;
-			position: relative;
-			border-radius: 5px;
-			z-index: -1;
+
+		#clock_row{
+			font-size: 50px;
+			font-weight: medium;
+			text-align: center;
 		}
 
-		#clock_display{
-			font-size: 80px;
-			position: relative;
+		#date_row{
+			font-size: 18px;
+			font-weight: medium;
+			text-align: center;
 		}
 
-		#battery{
-			max-width:100%;
-			max-height:100%;
-			display: block;
-			margin: auto;
-			float: right;
-			padding-right: 20px;
+		#lockscreen{
+			font-size: 10px;
+			font-weight: medium;
 			position: relative;
-			top: 50%;
-			transform: translateY(-50%);
-			z-index: 1;
-
+			top:3%;
+			visibility: visible;
 		}
-		.status_bar {
-			height: 25px;
-			margin: 0 ;
-			border-top-left-radius:5px;
-			border-top-right-radius:5px;
-			background: black;
-			padding: 0px;
+
+		#menu_bar{
+			font-size: 8px;
+			visibility: visible;
+		}
+
+		#menu_bar_td{
+			font-size: 15px;
+			font-weight: medium;
+			align-content: center;
+			text-align: center;
+		}
+
+		#menu_bar_icon{
+			align-items: center;
+			width: 75px;
+			height: 75px;
+		}
+
+		#status_bar_clock{
+			visibility: visible;
+			background-color: red;
+			text-align: center;
+		}
+
+		.status_bar_element{
+			padding: 2px;
+			margin: 0px;
+			align-items: center;
+			align-content: center;
 			vertical-align: middle;
-			z-index: -1;
+			max-height: 20px;
+			max-width: 15%;
+			min-height: 20px;
+			float: right;
 		}
+
 	</style>
 
 	<!--Código JavaScript vai aqui-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
 	<script type="text/javascript">
-		var display_element;
 
 		var tNow;
-		var tMin;
-		var tHour;
+		//var tMin;
+		//var tHour;
 
 		function start_time(){
 			var today = new Date();
 			var h = today.getHours();
 			var m = today.getMinutes();
+			var day = today.getDate();
+			var day_index = today.getDay();
+			var month_index = today.getMonth();
+			var days = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+			var months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
 			h = checkTime(h);
 			m = checkTime(m);
 
-			document.getElementById("clock_display").innerHTML = h + ":" + m;
+			//document.getElementById("clock_row").innerHTML = h + ":" + m;
+			document.getElementById("status_bar_clock").innerHTML = h + ":" + m;
+			document.getElementById("date_row").innerHTML = days[day_index] + ", " + day + " de " + months[month_index];
 			tNow = m + h*100;
-			tHour = h;
-			tMin = m;
-			var t = setTimeout(start_time, 500);
+			console.log("tNow = m + h*100 ="+ tNow);
+
+			//tHour = h;
+			//tMin = m;
+			//var t = setTimeout(start_time, 500);
 		}
 
 		function checkTime(i) {
@@ -93,8 +110,22 @@
 		}
 
 		function start_display(){
-			display_element = document.getElementById("display");
 			start_time();
+		}
+
+		function unlock_screen(){
+			toggle_hidden('lockscreen');
+			toggle_visible('menu_bar');
+		}
+
+		function toggle_visible(id) {
+			console.log(id);
+			document.getElementById(id).style.visibility = 'visible';
+		}
+
+		function toggle_hidden(id) {
+			console.log(id);
+			document.getElementById(id).style.visibility = 'hidden';
 		}
 	</script>
 	<!--Mensagem alternativa ao código JS-->
@@ -106,17 +137,59 @@
 
 	<!--Visor -->
 	<div id="display">
-		<!--Ecrã atual-->
-		<div id="onScreen">
 
-			<div id="status_bar" class="status_bar">
- 				<img id="battery" src="imagens_icons/icons8-phone-battery-full-50-2.png" alt="icon_bateria" />
- 			</div>	
+		<div id="status_bar" class="status_bar">
+ 				<div class="status_bar_element" id="status_bar_clock1">asda</div>
 
- 			<div id="clock_display" align="center"></div>
+				<img id="battery" src="../imagens_icons/icons8-phone-battery-full-50-2.png" alt="icon_bateria" /> 
 
-		</div>
-	</div>
+ 				<div class="status_bar_element" id="status_bar_clock"></div>
+
+ 		</div><!--end status_bar-->
+
+	
+ 		<div id="lockscreen" align="center" onclick="unlock_screen()" visibility="hidden"> <!--FIXMEEEE: aplicar isto no Locked; OBJ: transição de ecrãs-->
+ 			<table>
+ 				<tr id="clock_row"></tr>
+ 				<tr id="date_row"></tr>
+ 			</table>
+ 		</div>
+
+ 		<div id="menu_bar" align="center">
+ 			<table>
+ 				<tr>
+ 					<td id="menu_bar_td">
+ 						<a href="iGo_Perfil.html"></a>
+ 						<img id="menu_bar_icon" src= "../imagens_icons/icons8-login-to-my-account-50.png"/></td>
+
+ 					<td id="menu_bar_td">
+ 						<a href="iGo_Locais.html"></a>
+ 						<img src= "../imagens_icons/icons8-google-web-search-50.png"/></button></td>
+
+ 					<td id="menu_bar_td">
+ 						<a href="iGo_MeetUp.html"></a>
+ 						<img id="menu_bar_icon" src= "../imagens_icons/icons8-social-group-50.png"/></td>
+
+ 					<td id="menu_bar_td">
+ 						<a href="iGo_Galeria.html"></a>
+ 						<img id="menu_bar_icon" src= "../imagens_icons/icons8-stack-of-photos-50.png"/></td>
+
+ 					<td id="menu_bar_td">
+ 						<a href="iGo_Compras.html"></a>
+ 						<img id="menu_bar_icon" src= "../imagens_icons/icons8-online-payment-with-a-credit-card-50.png"/></td>
+
+ 				</tr>
+ 				<tr>
+ 					<td id="menu_bar_td">Perfil</td>
+ 					<td id="menu_bar_td">Locais</td>
+ 					<td id="menu_bar_td">Meet-Up</td>
+ 					<td id="menu_bar_td">Galeria</td>
+ 					<td id="menu_bar_td">Compras</td>
+ 				</tr>
+ 			</table>
+ 		</div> <!--end menu_bar-->
+
+	</div> <!--end display -->
 
 	
 </body>
