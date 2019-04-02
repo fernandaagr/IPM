@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	
+<!--script src="iGo.js"></script-->
+
+
+<head>
+	<meta charset="utf-8">	
+	<!--link href='https://fonts.google.com/?selection.family=Ubuntu' rel='stylesheet'-->
+
+	<title style="font-family: Ubuntu">iGo - Prototype</title>
+	<!--link rel="stylesheet" type="text/css" href="iGo_Home.css"-->
+
+	<!--https://fonts.google.com/?selection.family=Noto+Sans>
+	<https://fonts.google.com/?selection.family=Ubuntu>
+	<https://fonts.google.com/?selection.family=Muli>
+	<https://fonts.google.com/?selection.family=PT+Sans>
+	<https://fonts.google.com/?selection.family=Poppins>
+	<https://fonts.google.com/?selection.family=Titillium+Web-->
+
+	<!--Código CSS vai aqui-->
+	<style type="text/css">
+
+		#display{
+			height: 3.7cm;
+			width: 6.6cm;
+			font-family: Ubuntu;
+			font-style: medium;
+			font-size: 10px;
+			background: linear-gradient(to bottom, #99e6e6, #85e085);
+			/* background-color: #99e6e6; */
+			position: relative;
+			border-radius: 5px;
+			z-index: -1;
+		}
+
+		#clock_row{
+			font-size: 50px;
+			text-align: center;
+		}
+
+		#date_row{
+			font-size: 14px;
+			text-align: center;
+		}
+
+		#lockscreen{
+			font-size: 10px;
+			position: relative;
+			top:3%;
+			visibility: visible;
+		}
+
+		#home_screen{
+			font-size: 10px;
+			visibility: visible;
+		}
+
+		#home_screen_td{
+			width: 10%;
+			align-content: center;
+			text-align: center;
+		}
+
+		#home_screen_icon{
+			align-items: center;
+			width: 100%;
+		}
+
+		#battery{
+			max-width: 25px;
+			max-height:20px;
+			margin: 0px;
+			background-color: blue;
+		}
+
+		#status_bar_clock{
+			visibility: visible;
+			background-color: red;
+			text-align: center;
+		}
+
+		.status_bar {
+			height: 28px;
+			margin: 0 ;
+			border-top-left-radius:5px;
+			border-top-right-radius:5px;
+			padding: 2px;
+			vertical-align: middle;
+			background-color: green;
+		}
+
+		.status_bar_element{
+			padding: 2px;
+			margin: 0px;
+			align-items: center;
+			align-content: center;
+			vertical-align: middle;
+			max-height: 20px;
+			max-width: 15%;
+			min-height: 20px;
+			float: right;
+		}
+
+	</style>
+
+	<!--Código JavaScript vai aqui-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<script type="text/javascript">
+
+		var tNow;
+		//var tMin;
+		//var tHour;
+
+		function start_time(){
+			var today = new Date();
+			var h = today.getHours();
+			var m = today.getMinutes();
+			var day = today.getDate();
+			var day_index = today.getDay();
+			var month_index = today.getMonth();
+			var days = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+			var months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+			h = checkTime(h);
+			m = checkTime(m);
+
+			document.getElementById("clock_row").innerHTML = h + ":" + m;
+			document.getElementById("status_bar_clock").innerHTML = h + ":" + m;
+			document.getElementById("date_row").innerHTML = days[day_index] + ", " + day + " de " + months[month_index];
+			tNow = m + h*100;
+			console.log("tNow = m + h*100 ="+ tNow);
+
+			//tHour = h;
+			//tMin = m;
+			//var t = setTimeout(start_time, 500);
+		}
+
+		function checkTime(i) {
+		    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+		    return i;
+		}
+
+		function start_display(){
+			start_time();
+		}
+
+		function unlock_screen(){
+			toggle_hidden('lockscreen');
+			toggle_visible('home_screen');
+		}
+
+		function toggle_visible(id) {
+			console.log(id);
+			document.getElementById(id).style.visibility = 'visible';
+		}
+
+		function toggle_hidden(id) {
+			console.log(id);
+			document.getElementById(id).style.visibility = 'hidden';
+		}
+	</script>
+	<!--Mensagem alternativa ao código JS-->
+	<noscript>Sorry, your browser does not support JavaScript!</noscript>
+
+</head>
+<body onload="start_display()">
+	<h1 id="Homepage" align="center">iGo - Homepage</h1>
+
+	<!--Visor -->
+	<div id="display">
+
+		<div id="status_bar" class="status_bar">
+ 				<div class="status_bar_element" id="status_bar_clock1">asda</div>
+
+ 				<div class="status_bar_element"> <img id="battery" src="imagens_icons/icons8-phone-battery-full-50-2.png" alt="icon_bateria" /> </div>
+ 				<div class="status_bar_element" id="status_bar_clock2">REEE</div>
+ 				<div class="status_bar_element" id="status_bar_clock"></div>
+
+ 		</div>	
+
+	
+ 		<div id="lockscreen" align="center" onclick="unlock_screen()" visibility="hidden">
+ 			<table>
+ 				<tr id="clock_row"></tr>
+ 				<tr id="date_row"></tr>
+ 			</table>
+ 		</div>
+
+ 		<div id="home_screen" align="center">
+ 			<table>
+ 				<tr>
+ 					<td id="home_screen_td"><img id="home_screen_icon" src= "imagens_icons/Favorites/icons8-login-to-my-account-50.png"/></td>
+ 					<td id="home_screen_td"><button id="home_screen_icon" style="padding: 0px;"> <img src= "imagens_icons/Favorites/icons8-google-web-search-50.png"/></button></td>
+ 					<td id="home_screen_td"><img id="home_screen_icon" src= "imagens_icons/Favorites/icons8-social-group-50.png"/></td>
+ 					<td id="home_screen_td"><img id="home_screen_icon" src= "imagens_icons/Favorites/icons8-stack-of-photos-50.png"/></td>
+ 					<td id="home_screen_td"><img id="home_screen_icon" src= "imagens_icons/Favorites/icons8-online-payment-with-a-credit-card-50.png"/></td>
+
+ 				</tr>
+ 				<tr>
+ 					<td id="home_screen_td">Perfil</td>
+ 					<td id="home_screen_td">Locais</td>
+ 					<td id="home_screen_td">Meet-Up</td>
+ 					<td id="home_screen_td">Galeria</td>
+ 					<td id="home_screen_td">Compras</td>
+ 				</tr>
+ 			</table>
+ 		</div>
+
+	</div>
+
+	
+</body>
+</html>
