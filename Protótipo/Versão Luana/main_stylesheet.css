@@ -8,13 +8,12 @@ body{
 	font-family: "Verdana";
 	font-style: medium;
 	font-size: 38px;
-	background: linear-gradient(to bottom, #99e6e6, #85e085);
+	background: linear-gradient(to bottom,#e7e6ff, #b8b8e0);
 	/* background-color: #99e6e6; */
 	margin: auto;
 	align-self: center;
 	position: relative;
 	border-radius: 5px;
-	z-index: -1;
 }
 
 #battery{
@@ -27,8 +26,6 @@ body{
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
-	z-index: 1;
-
 }
 
 .status_bar {

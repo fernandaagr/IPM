@@ -7,7 +7,7 @@
 <head>
 	<meta charset="utf-8">	
 
-	<title style="font-family: Verdana">iGo - Prototype</title>
+	<title style="font-family: Verdana">iGo - Prototype - Locked Screen</title>
 	<link rel="stylesheet" type="text/css" href="main_stylesheet.css">
 
 	<!--Código CSS vai aqui-->
@@ -28,7 +28,7 @@
 		var tMin;
 		var tHour;
 
-		function start_time(){
+		function start_dateTime(){
 			var today = new Date();
 			var h = today.getHours();
 			var m = today.getMinutes();
@@ -42,13 +42,9 @@
 			m = checkTime(m);
 
 			document.getElementById("clock_display").innerHTML = h + ":" + m;
-			document.getElementById("status_bar_clock").innerHTML = h + ":" + m;
 			document.getElementById("date_row").innerHTML = days[day_index] + ", " + day + " de " + months[month_index];
 
-			//tNow = m + h*100;
-			//tHour = h;
-			//tMin = m;
-			var t = setTimeout(start_time, 500);
+			var t = setTimeout(start_dateTime, 500);
 		}
 
 		function checkTime(i) {
@@ -58,8 +54,24 @@
 
 		function start_display(){
 			display_element = document.getElementById("display");
-			start_time();
+			start_dateTime();
 		}
+
+		function unlock_screen(){
+			toggle_hidden('lockscreen');
+			toggle_visible('menu_bar');
+		}
+
+		function toggle_visible(id) {
+			console.log(id);
+			document.getElementById(id).style.visibility = 'visible';
+		}
+
+		function toggle_hidden(id) {
+			console.log(id);
+			document.getElementById(id).style.visibility = 'hidden';
+		}
+
 	</script>
 	<!--Mensagem alternativa ao código JS-->
 	<noscript>Sorry, your browser does not support JavaScript!</noscript>
