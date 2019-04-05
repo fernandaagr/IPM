@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
-	
-<!--script src="iGo.js"></script-->
+
+<!--bibliotecas e plugins JS vai aqui--	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script-->
+
 
 
 <head>
 	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="main_stylesheet.css">
 
 	<title style="font-family: Verdana">iGo - Prototype - Homepage</title>
-	<link rel="stylesheet" type="text/css" href="main_stylesheet.css">
 
 	<!--Código CSS vai aqui-->
 	<style type="text/css">
+		/*FOR "DEBUG"*
+		div{
+			border-style: dotted;
+			border-color: black;
+		}*/
 
 		#clock_display{
 			font-size: 50px;
@@ -68,13 +76,7 @@
 	</style>
 
 	<!--Código JavaScript vai aqui-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
 	<script type="text/javascript">
-
-		var tNow;
-		//var tMin;
-		//var tHour;
 
 		function start_time(){
 			var today = new Date();
@@ -94,6 +96,7 @@
 		}
 
 		function start_display(){
+			var display_element = document.getElementById("display");
 			start_time();
 		}
 

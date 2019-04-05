@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 	
-<!--script src="iGo.js"></script-->
 
 
 <head>
 	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="main_stylesheet.css">
 
 	<title style="font-family: Verdana">iGo - Prototype - Locked Screen</title>
-	<link rel="stylesheet" type="text/css" href="main_stylesheet.css">
 
 	<!--Código CSS vai aqui-->
 	<style type="text/css">
@@ -20,14 +20,35 @@
 
 	</style>
 
-	<!--Código JavaScript vai aqui-->
+</head>
+<body onload="start_display()">
+	<h1 id="Homepage" align="center">iGo - Locked Page</h1>
+
+	<!--Visor -->
+	<div id="display">
+		<!--Ecrã atual-->
+		<div id="onScreen">
+
+			<div id="status_bar" class="status_bar">
+ 				<img id="battery" src="../imagens_icons/icons8-phone-battery-full-50-2.png" alt="icon_bateria" />
+ 			</div>	
+
+ 			<div id="clock_display" align="center">
+ 				<a href="iGo_Home.html"></a>
+				<div id="date_row"></div>
+
+ 			</div>
+
+		</div>
+	</div>
+
+	
+
+
+<!--Código JavaScript vai aqui-->
 	<script type="text/javascript">
 		var display_element;
-
-		var tNow;
-		var tMin;
-		var tHour;
-
+		
 		function start_dateTime(){
 			var today = new Date();
 			var h = today.getHours();
@@ -53,47 +74,13 @@
 		}
 
 		function start_display(){
-			display_element = document.getElementById("display");
+			var display_element = document.getElementById("display");
 			start_dateTime();
-		}
-
-		function unlock_screen(){
-			toggle_hidden('lockscreen');
-			toggle_visible('menu_bar');
-		}
-
-		function toggle_visible(id) {
-			console.log(id);
-			document.getElementById(id).style.visibility = 'visible';
-		}
-
-		function toggle_hidden(id) {
-			console.log(id);
-			document.getElementById(id).style.visibility = 'hidden';
 		}
 
 	</script>
 	<!--Mensagem alternativa ao código JS-->
 	<noscript>Sorry, your browser does not support JavaScript!</noscript>
 
-</head>
-<body onload="start_display()">
-	<h1 id="Homepage" align="center">iGo - Homepage</h1>
-
-	<!--Visor -->
-	<div id="display">
-		<!--Ecrã atual-->
-		<div id="onScreen">
-
-			<div id="status_bar" class="status_bar">
- 				<img id="battery" src="../imagens_icons/icons8-phone-battery-full-50-2.png" alt="icon_bateria" />
- 			</div>	
-
- 			<div id="clock_display" align="center"></div>
-
-		</div>
-	</div>
-
-	
 </body>
 </html>

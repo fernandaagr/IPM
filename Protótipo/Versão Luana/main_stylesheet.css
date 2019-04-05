@@ -26,6 +26,7 @@ body{
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
+	border-color: yellow; /*FOR "DEBUG"*/
 }
 
 .status_bar {
