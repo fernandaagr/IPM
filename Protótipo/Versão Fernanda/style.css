@@ -261,9 +261,7 @@ h3{
 	font-weight: bold;
 	margin: 2.5px 0;
 }
-body{
-	background-color: gray;
-}
+
 /* Go from zero to full opacity */
 @keyframes fadeEffect {
     from {opacity: 0;}
