@@ -126,11 +126,12 @@
 </head>
 <body onload="start_display()">
 	<div class="container">
-		<img src="img/device.png" usemap="#image-map">
+		<!--img src="img/device.png" usemap="#image-map">
 		<map name="image-map">
-		<area alt="lock" title="lock" shape="rect" coords="20,0,58,11" onclick="lockScreen()">
+			<area alt="lock" title="lock" shape="rect" coords="20,0,58,11" onclick="lockScreen()">
 
-		</map>
+		</map-->
+
 		<div class="device">
 			<div id="locked" class="default screen">
 				<div id="onScreen">
@@ -160,8 +161,8 @@
 
 					<div id="icons">
 						<div>
-							<a href="" onclick="openScreen(event, 'profile')"><i class="far fa-user"></i></a>
-							<span>Profile</span>
+							<a href="" onclick="openScreen(event, 'perfil')"><i class="far fa-user"></i></a>
+							<span>Perfil</span>
 						</div>
 						<div>
 							<a href="" onclick="openScreen(event, 'search')"><i class="fas fa-search"></i></a>
@@ -181,11 +182,11 @@
 						</div>
 						
 					</div>
-					<div id="profile" class="tab">
+					<div id="perfil" class="tab">
 						<span id="previous" ></span>
-						<p>profile screen</p>
+						<!--p>profile screen</p-->
 						<p>
-							<a class="back" href="" onclick="backToScreen(event, 'profile')"><i class="fas fa-arrow-circle-left"></i></a>
+							<a class="back" href="" onclick="backToScreen(event, 'perfil')"><i class="fas fa-arrow-circle-left"></i></a>
 						</p>
 					</div>
 					<div id="search" class="tab">
@@ -202,6 +203,7 @@
 							
 					
 						<div id="show-results">
+							<!--lista dos resultados-->
 							<ul id="results">
 
 							</ul>
@@ -212,21 +214,21 @@
 					</div>
 					<div id="shopping" class="tab">
 						<span id="previous"></span>
-						<p>shopping screen</p>
+						<!--p>shopping screen</p-->
 						<p>
 							<a class="back" href="" onclick="backToScreen(event, 'shopping')"><i class="fas fa-arrow-circle-left"></i></a>
 						</p>
 					</div>
 					<div id="images" class="tab">
 						<span id="previous"></span>
-						<p>images screen</p>
+						<!--p>images screen</p-->
 						<p>
 							<a class="back" href="" onclick="backToScreen(event, 'images')"><i class="fas fa-arrow-circle-left"></i></a>
 						</p>
 					</div>
 					<div id="meetup" class="tab">
 						<span id="previous"></span>
-						<p>meetup screen</p>
+						<!--p>meetup screen</p-->
 						<p>
 							<a class="back" href="" onclick="backToScreen(event, 'meetup')"><i class="fas fa-arrow-circle-left"></i></a>
 						</p>

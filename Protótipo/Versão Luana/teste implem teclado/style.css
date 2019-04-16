@@ -6,12 +6,16 @@
 	margin-top: 50px;
 }
 .device{/*div com tela e area do home button*/
+	height: 210px;
+	width: 210px;
+	color: black;
 	position: absolute;
 	left: 14px;
 	top: 24px;
 }
 .default{ /*se aplica as div da tela e do botão home*/
-	height: 5.382cm;
+	height: 204px;
+	width: 210px;
 }
 
 .screen{ /*se aplica as telas locked e display*/
@@ -20,12 +24,12 @@
 	left: 0px;
 	top: 0px;*/
 	
-	height: 5.382cm;
-	width: 10.7763cm;
+	height: 204px; /*5.4cm;*/
+	width: 204px;
 	font-family: Ubuntu;
 	font-style: medium;
 	/*font-size: 38px;*/
-	background: linear-gradient(to bottom, #99e6e6, #85e085);
+	background: linear-gradient(to bottom, #adebeb, #aeeaae);
 	align-self: center;
 	border-radius: 5px;
 	margin-left: auto;
@@ -129,19 +133,21 @@ p{
 	height: 100%;
 }
 #icons{
-	max-width: 407px;
+	max-width: 40px;
 	/*width: 100%;
 	height: 100%;*/
-	margin: 0 auto;
+	object-position: 
+	margin: auto;
 	flex-direction: row;
 	flex-wrap: wrap;
-	align-items: flex-start;
+	align-items: center;
+	align-content: space-between;
+	justify-content: center;
 	display: flex;
-	padding: 10px;
+	padding: 50px;
 
 }
 #icons div{
-
 	flex-grow: 1;
 	width: 14%;
 	height: 28%;
@@ -150,10 +156,12 @@ p{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	align-self: center;
 	text-align: center;
 	margin: 2.5px;
-	font-size: 16px;
+	font-size: 18px;
 	text-align: center;
+	color: #337ab7;
 
 }
 #icons a{
@@ -162,8 +170,9 @@ p{
 	border-radius: 3px;
 	padding: 5px;
 	font-size: 25px;
-	width: 55%;
-	color: gray;
+	width: 58px;
+	height: 58px;
+	/*color: gray;*/
 }
 #icons a:active{
 	opacity: 0.3;
