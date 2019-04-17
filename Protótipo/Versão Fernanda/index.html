@@ -1,138 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="css/all.min.css">
 	<script src="javascript/jquery-3.3.1.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script type="text/javascript">
-		var display_element;
 
-		var tNow;
-		var tMin;
-		var tHour;
-		var t;
-		var time;
-		function start_time(){
-			var today = new Date();
-			var h = today.getHours();
-			var m = today.getMinutes();
-
-			h = checkTime(h);
-			m = checkTime(m);
-
-			
-			document.getElementById("clock_display").innerHTML = h + ":" + m;
-			document.getElementById("spanClock").innerHTML = h + ":" +m;
-			
-			//tNow = m + h*100;
-			//console.log("tNow = m + h*100 ="+ tNow);
-
-			tHour = h;
-			tMin = m;
-			
-			
-			t = setTimeout(start_time, 500);
-		}
-
-		function checkTime(i) {
-		    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-		    return i;
-		}
-
-		function start_display(){
-			start_time();
-
-		}
-
-		function lockScreen(){
-			//document.getElementById("display").style.display = "none";
-			event.preventDefault();
-			$("#unlocked").css("display", "none");
-			document.getElementById('locked').style.display = "block";
-		}
-		function unlockScreen(){
-			event.preventDefault();
-			document.getElementById("locked").style.display = "none";
-			document.getElementById('unlocked').style.display = "block";
-			/*
-			$('#locked').fadeOut();
-			$('#display').fadeIn();
-				*/
-		}
-		function openScreen(event, screen){
-
-			event.preventDefault();
-			document.getElementById("previous").innerHTML = ""+screen;
-			document.getElementById('icons').style.display = "none";
-			//document.getElementById(screen).style.display = "block";
-			console.log(screen);
-
-
-			// Declare all variables
-		    var i, tab;
-
-		    // Get all elements with class="tabcontent" and hide them
-		    tab = document.getElementsByClassName("tab");
-		    for (i = 0; i < tab.length; i++) {
-		        tab[i].style.display = "none";
-		    }
-
-		    // Show the current tab, and add an "active" class to the button that opened the tab
-		    document.getElementById(screen).style.display = "block";
-
-		}
-		function backToScreen(event, current){
-			
-			event.preventDefault();
-			var previousScreen = document.getElementById("previous").innerHTML;
-			console.log(previousScreen);
-			document.getElementById(current).style.display = "none";
-			if (previousScreen == current) {
-				document.getElementById("icons").style.display = "flex";
-			}else{
-				document.getElementById(previousScreen).style.display = "block";
-			}
-			
-			
-		}
-		$(document).ready(function(){
-			console.log("page loaded");
-			$('#locked').click(function(event) {
-				event.preventDefault();
-				unlockScreen();				
-			});
-			$('#unlocked').click(function(){
-				//lockScreen();				
-			});
-			$('#homeBtn').click(function(){
-				console.log("clicou");
-				var isLocked = $('#locked').css('display');
-
-			    if(isLocked == "none"){
-					// Get all elements with class="tab" and hide them
-					tab = document.getElementsByClassName("tab");
-					for (i = 0; i < tab.length; i++) {
-						tab[i].style.display = "none";
-					}
-					document.getElementById("icons").style.display = "flex";   
-			    }else{
-			    	console.log("its locked");
-			    }
-			});
-		});
 	</script>
 </head>
 <body onload="start_display()">
 	<div class="container">
-		<img src="img/device.png" usemap="#image-map">
+		<img src="images/device.png" usemap="#image-map">
 		<map name="image-map">
-		<area alt="lock" title="lock" shape="rect" coords="20,0,58,11" onclick="lockScreen()">
-
+			<area alt="lock" title="lock" shape="rect" coords="20,0,58,11" onclick="lockScreen()">
 		</map>
+
+		<!-- Screen and home button area-->
+		<span id="previous"></span>
 		<div class="device">
+
+			<!-- screen when device is locked-->
 			<div id="locked" class="default screen">
 				<div id="onScreen">
 
@@ -152,21 +42,28 @@
 				</div>
 			</div>
 
+			<!-- screen when device is unlocked-->
 			<div id="unlocked" class="default screen">
+
+
+				<!-- content of screen-->
 				<div id="onScreen">
 					<div id="status_bar" class="status_bar">
 						<span id="spanClock"></span>
 						<img id="battery" src="imagens_icons/icons8-phone-battery-full-50-2.png" alt="icon_bateria" />
 					</div>	
 
+					<!-- home screen with icons-->
 					<div id="icons">
+						<!--
 						<div>
 							<a href="" onclick="openScreen(event, 'profile')"><i class="far fa-user"></i></a>
 							<span>Profile</span>
 						</div>
+						-->
 						<div>
 							<a href="" onclick="openScreen(event, 'search')"><i class="fas fa-search"></i></a>
-							<span>Procurar Locais</span>
+							<span>Procurar</span>
 						</div>
 						<div>
 							<a href="" onclick="openScreen(event, 'shopping')"><i class="fas fa-shopping-cart"></i></a>
@@ -182,6 +79,9 @@
 						</div>
 						
 					</div>
+					
+					<!-- profile screen -->
+					<!--
 					<div id="profile" class="tab">
 						<span id="previous" ></span>
 						<p>profile screen</p>
@@ -189,53 +89,135 @@
 							<a class="back" href="" onclick="backToScreen(event, 'profile')"><i class="fas fa-arrow-circle-left"></i></a>
 						</p>
 					</div>
+					-->
+					<!-- search screen -->
 					<div id="search" class="tab">
-						<span id="previous" ></span>
+						
 						<p>search screen</p>
+						<!-- search area -->
 						<div class="search-items">
 							<input type="search" name="" id="search-input">
-							<button id="clear" class="search-buttons">Clear</button>
 							<button id="btSearch" class="search-buttons">Search</button>
 							
 						</div>
-						<div id="show-results">
-							<ul id="results">
+						<!-- shows results from search -->
+						<!--<div class="test">-->
+							<div class="back-div">
+								<p>
+									<a class="back-link" href="" onclick="backToScreen(event, 'search')"><i class="fas fa-arrow-circle-left"></i></a>
+								</p>								
+							</div>
 
-							</ul>
-						</div>
-						<p>
-							<a class="back" href="" onclick="backToScreen(event, 'search')"><i class="fas fa-arrow-circle-left"></i></a>
-						</p>
+							<div id="show-results">
+								<ul id="results">
+
+								</ul>
+							</div>
+
+							<div id="clear"></div>
+						<!--</div-->
+
 					</div>
+					<!-- shopping screan -->
 					<div id="shopping" class="tab">
-						<span id="previous"></span>
+						
 						<p>shopping screen</p>
-						<p>
-							<a class="back" href="" onclick="backToScreen(event, 'shopping')"><i class="fas fa-arrow-circle-left"></i></a>
-						</p>
+						<!--<div class="test">-->
+							<div class="back-div">
+								<p>
+									<a class="back-link" href="" onclick="backToScreen(event, 'shopping')"><i class="fas fa-arrow-circle-left"></i></a>
+								</p>
+							</div>
+							<div>
+								<!-- RESTANTE INTERFACE VAI AQUI -->
+								<p>compras baseadas na localização no utilizador (usar localização do navegador)</p>
+								<p>lista de opções, além da localização, o que outros utilizadores sugeriram(?)</p>
+							</div>
+							<div id="clear"></div>
+						<!--</div>-->
 					</div>
+
+					<!-- image galery screen-->
 					<div id="images" class="tab">
-						<span id="previous"></span>
-						<p>images screen</p>
-						<p>
-							<a class="back" href="" onclick="backToScreen(event, 'images')"><i class="fas fa-arrow-circle-left"></i></a>
-						</p>
+						
+						<p>Minha Galeria</p>
+						<!--<div class="test">-->
+							<div class="back-div">
+								<p>
+									<a class="back-link" href="" onclick="backToScreen(event, 'images')"><i class="fas fa-arrow-circle-left"></i></a>
+								</p>							
+							</div>
+
+							<!-- --based on: https://www.w3schools.com/howto/howto_js_tab_img_gallery.asp>-->
+							<div id="small" class="gallery" >
+								<div class="column">
+									<img class="slide" src="images/1.jpg" alt="foto01" onclick="showClicked(this);">
+								</div>
+								<div class="column">
+									<img class="slide" src="images/2.jpg" alt="foto02" onclick="showClicked(this);">
+								</div>
+								<div class="column">
+									<img class="slide" src="images/3.jpg" alt="foto03" onclick="showClicked(this);">
+								</div>
+								<div class="column">
+									<img class="slide" src="images/4.jpg" alt="foto04" onclick="showClicked(this);">
+								</div>
+								<div class="column">
+									<img class="slide" src="images/1.jpg" alt="foto01" onclick="showClicked(this);">
+								</div>
+								<div class="column">
+									<img class="slide" src="images/2.jpg" alt="foto02" onclick="showClicked(this);">
+								</div>
+								<div class="column">
+									<img class="slide" src="images/3.jpg" alt="foto03" onclick="showClicked(this);">
+								</div>
+								<div class="column">
+									<img class="slide" src="images/4.jpg" alt="foto04" onclick="showClicked(this);">
+								</div>
+							</div>
+							<div id="big" class="">
+								<span onclick="closeImg();"  id="close" class="closebtn">&times;</span>
+								<a class="prev" id="btn1" onclick="plusDivs(-1)">&#10094</a>
+								<a class="next" id="btn2" onclick="plusDivs(1)">&#10095</a>
+								<div class="current">
+									<img id="expandedImg" style="width:100%">
+								</div>
+							</div>
+							<div id="clear"></div>
+						<!--</div>-->
 					</div>
+
+					<!-- meetup screen-->
 					<div id="meetup" class="tab">
-						<span id="previous"></span>
+						
 						<p>meetup screen</p>
-						<p>
-							<a class="back" href="" onclick="backToScreen(event, 'meetup')"><i class="fas fa-arrow-circle-left"></i></a>
-						</p>
+						<!--<div class="test">-->
+							<div class="back-div">
+								<p>
+									<a class="back-link" href="" onclick="backToScreen(event, 'meetup')"><i class="fas fa-arrow-circle-left"></i></a>
+								</p>
+							</div>
+							<div>
+								<!-- RESTANTE INTERFACE VAI AQUI -->
+								<p>opção de criar meetup</p>
+								<p>opção de ver no mapa utilizadores que estão por perto (?)</p>
+								<p>usar localização atual do ultilizador para listar os meetups</p>
+							</div>
+							<div id="clear"></div>
+						<!--</div>-->
+
 					</div>
 				</div>
 			</div>
+			<!-- home button area-->
 			<div id="home" class="default">
 				<button id="homeBtn"><i class="fas fa-home"></i></button>
 			</div>
 			<div id="clear"></div>
 		</div>
 	</div>
+	<script type="text/javascript" src="javascript/main.js"></script>
 	<script type="text/javascript" src="javascript/search.js"></script>
+	<script type="text/javascript" src="javascript/gallery.js"></script>
 </body>
 </html>
