@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="css/all.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -52,6 +53,7 @@
 			$("#unlocked").css("display", "none");
 			document.getElementById('locked').style.display = "block";
 		}
+
 		function unlockScreen(){
 			event.preventDefault();
 			document.getElementById("locked").style.display = "none";
@@ -61,6 +63,7 @@
 			$('#display').fadeIn();
 				*/
 		}
+
 		function openScreen(event, screen){
 
 			event.preventDefault();
@@ -68,7 +71,6 @@
 			document.getElementById('icons').style.display = "none";
 			//document.getElementById(screen).style.display = "block";
 			console.log(screen);
-
 
 			// Declare all variables
 		    var i, tab;
@@ -83,6 +85,7 @@
 		    document.getElementById(screen).style.display = "block";
 
 		}
+
 		function backToScreen(event, current){
 			
 			event.preventDefault();
@@ -97,6 +100,7 @@
 			
 			
 		}
+
 		$(document).ready(function(){
 			console.log("page loaded");
 			$('#locked').click(function(event) {
@@ -125,14 +129,19 @@
 	</script>
 </head>
 <body onload="start_display()">
-	<div class="container">
-		<!--img src="img/device.png" usemap="#image-map">
+	<div class="mycontainer">  
+		<img id="deviceFrame" src="imagens_icons/device.png" usemap="#image-map">
 		<map name="image-map">
-			<area alt="lock" title="lock" shape="rect" coords="20,0,58,11" onclick="lockScreen()">
-
-		</map-->
+			<area id="homeBtn" alt="lock" title="lock" shape="rect" coords="20,0,58,11" ondblclick="lockScreen()">
+		</map>
 
 		<div class="device">
+
+			<!--botao home>
+			<div id="home" class="default">
+				<button id="homeBtn"><i class="fas fa-home"></i></button>
+			</div-->
+
 			<div id="locked" class="default screen">
 				<div id="onScreen">
 
@@ -159,29 +168,29 @@
 						<img id="battery" src="imagens_icons/icons8-phone-battery-full-50-2.png" alt="icon_bateria" />
 					</div>	
 
-					<div id="icons">
-						<div>
-							<a href="" onclick="openScreen(event, 'perfil')"><i class="far fa-user"></i></a>
-							<span>Perfil</span>
-						</div>
-						<div>
-							<a href="" onclick="openScreen(event, 'search')"><i class="fas fa-search"></i></a>
-							<span>Locais</span>
-						</div>
-						<div>
-							<a href="" onclick="openScreen(event, 'shopping')"><i class="fas fa-shopping-cart"></i></a>
-							<span>Comprar</span>
-						</div>
-						<div>
-							<a href="" onclick="openScreen(event, 'images')"><i class="far fa-images"></i></a>
-							<span>Galeria</span>
-						</div>
-						<div>
-							<a href="" onclick="openScreen(event, 'meetup')"><i class="fas fa-users"></i></a>
-							<span>MeetUp</span>
-						</div>
-						
-					</div>
+					<table id="icons">
+						<tr>
+							<td>
+								<a href="" onclick="openScreen(event, 'perfil')"><i class="far fa-user"></i></a>
+								<span>Perfil</span>
+							</td>
+							<td>
+								<a href="" onclick="openScreen(event, 'search')"><i class="fas fa-search"></i></a>
+								<span>Locais</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a href="" onclick="openScreen(event, 'shopping')"><i class="fas fa-shopping-cart"></i></a>
+								<span>Comprar</span>
+							</td>
+							<td>
+								<a href="" onclick="openScreen(event, 'meetup')"><i class="fas fa-users"></i></a>
+								<span>MeetUp</span>
+							</td>
+						</tr>
+					</table>
+
 					<div id="perfil" class="tab">
 						<span id="previous" ></span>
 						<!--p>profile screen</p-->
@@ -193,7 +202,7 @@
 						<span id="previous" ></span>
 						<!--p>search screen</p>-->
 						<form class="row form">
-	                        <div class="col-sm-offset-4 col-sm-4 form-group">
+	                        <div class="col-xs-12 form-group">
 	                            <input type="text" name="code" class="form-control input-lg">
 	                        </div>
 
@@ -235,10 +244,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="home" class="default">
-				<button id="homeBtn"><i class="fas fa-home"></i></button>
-			</div>
-			<div id="clear"></div>
+
 		</div>
 	</div>
 	<script type="text/javascript" src="javascript/search.js"></script>

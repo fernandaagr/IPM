@@ -1,21 +1,31 @@
-.container{
+.mycontainer{
+	height: 240px;
+	width: 240px;
+	color: black;
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
-	width: 476px;
 	margin-top: 50px;
 }
+
+#deviceFrame{
+	align-self: center;
+	position: absolute;
+}
+
 .device{/*div com tela e area do home button*/
 	height: 210px;
 	width: 210px;
 	color: black;
 	position: absolute;
+	align-content: center;
 	left: 14px;
 	top: 24px;
 }
 .default{ /*se aplica as div da tela e do botão home*/
 	height: 204px;
 	width: 210px;
+	position: relative;
 }
 
 .screen{ /*se aplica as telas locked e display*/
@@ -50,28 +60,11 @@
 
 }
 #home{
-	float: left;
+	position: absolute;
+	float:right; 
 	margin-left: 8px;	
 }
-#clear{
-	clear: both;
-}
-#homeBtn{
-	color: #000000;
-	cursor: pointer;
-	font-weight: bold;
-	margin-left: auto;
-	margin-right: auto;
-	/*-ms-transform: rotate(-90deg); /* IE 9 */
-  	/*-webkit-transform: rotate(-90deg); /* Safari 3-8 */
-  	/*transform: rotate(-90deg);*/
-  	position: relative;
-  	top: 50%;
-  	font-size: 20px;
-  	border: none;
-  	border-radius: 30%;
-  	height: 15%;
-}
+
 #clock_display{
 	font-size: 80px;
 	position: relative;
@@ -188,7 +181,7 @@ p{
 	height: 0px;
 }
 /*
-#profile, #search, #shopping, #images, #meetup{
+#perfil, #search, #shopping, #images, #meetup{
 	display: none;
 }
 */
@@ -202,7 +195,7 @@ p{
 	align-items: center;
 }
 
-/*-------- seach screen -----------*/
+/*-------- search screen -----------*/
 #search-input{
 	width: 50%;
 	height: 25px;
