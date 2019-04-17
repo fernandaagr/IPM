@@ -1,3 +1,6 @@
+body{
+	font-family: Ubuntu, sans-serif;
+}
 .container{
 	position: relative;
 	margin-left: auto;
@@ -21,8 +24,8 @@
 	top: 0px;*/
 	
 	height: 5.382cm;
-	width: 10.7763cm;
-	font-family: Ubuntu;
+	width: 6.8cm;
+	
 	font-style: medium;
 	/*font-size: 38px;*/
 	background: linear-gradient(to bottom, #99e6e6, #85e085);
@@ -123,13 +126,41 @@ p{
 	margin-left: auto;
 }
 
+#previous{
+	visibility: hidden;
+	width: 0px;
+	height: 0px;
+}
+/*
+#profile, #search, #shopping, #images, #meetup{
+	display: none;
+}
+*/
+.tab{
+	display: none;
+}
+.test{
+	float: left;
+}
+.back-div{
+	position: relative;
+	bottom: -90px;
+	float: left;
+}
+.back-link{
+	color: black;
+	font-size: 16px;
+	text-decoration: none;
+	align-items: center;
+}
+
 /*  --------------- ICONS --------------*/
 #onScreen{
 	width: 100%;
 	height: 100%;
 }
 #icons{
-	max-width: 407px;
+	max-width: 237px;
 	/*width: 100%;
 	height: 100%;*/
 	margin: 0 auto;
@@ -143,8 +174,8 @@ p{
 #icons div{
 
 	flex-grow: 1;
-	width: 14%;
-	height: 28%;
+	width: 25%;
+	height: 30%;
 	max-width: 58px;
 	max-height: 58px;
 	display: flex;
@@ -154,11 +185,13 @@ p{
 	margin: 2.5px;
 	font-size: 16px;
 	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 
 }
 #icons a{
-	z-index: 10;
-	border: 1px #D3D3D3 solid;
+	z-index: 1;
+	border: 1px gray solid;
 	border-radius: 3px;
 	padding: 5px;
 	font-size: 25px;
@@ -173,29 +206,10 @@ p{
 	font-size: 14px;
 }
 
-#previous{
-	visibility: hidden;
-	width: 0px;
-	height: 0px;
-}
-/*
-#profile, #search, #shopping, #images, #meetup{
-	display: none;
-}
-*/
-.tab{
-	display: none;
-}
-.back{
-	color: black;
-	font-size: 16px;
-	text-decoration: none;
-	align-items: center;
-}
 
 /*-------- seach screen -----------*/
 #search-input{
-	width: 50%;
+	width: 70%;
 	height: 25px;
 	margin-right: auto;
 	margin-left: auto;
@@ -225,11 +239,12 @@ button.active{
 	margin: 5px auto;
 }
 #show-results{
-	width: 80%;
-	margin-right: auto;
-	margin-left: auto;
+	width: 85%;
+	/*margin-right: auto;
+	margin-left: auto;*/
 	/*overflow: scroll;*/
-	max-height: 95px;
+	max-height: 115px;
+
 }
 #show-results p{
 	text-align: justify;
@@ -262,6 +277,113 @@ h3{
 	margin: 2.5px 0;
 }
 
+/* -------------- images ----------------*/
+.gallery{
+	border: 1px solid black;
+	width: 85%;
+	height: 135px;
+	overflow: scroll;
+	/*margin-right: auto;
+	margin-left: auto;*/
+	margin-top: 5px;
+}
+#images p{
+	margin: 5px 0;
+}
+#images .back-div{
+	bottom: -120px;
+}
+#images .back-div p{
+	margin: 5px;
+}
+
+/* The grid: Four equal columns that floats next to each other */
+.column {
+	float: left;
+	width: 33%;
+	/*padding: 10px;*/
+}
+
+/* Style the images inside the grid */
+.column img {
+	width:100%;
+	cursor: pointer; 
+}
+
+#big{
+	position: absolute;
+	display: none;
+	z-index: 1;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.3);
+	align-items: center;
+	top: 25px;
+	left: 0px;
+	width: 85.7%;
+	height: 88%;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+#big img{
+	/*object-fit: fill;
+	max-width: 240px;
+	max-height: 240px;*/
+	margin-top: 16px;
+}
+.current{
+	width: 70%;
+	height: 100%;
+	/*position: relative;
+	top: 50px;*/
+	margin: auto;
+	align-items: center;
+}
+/* Closable button inside the expanded image */
+.closebtn {
+	position: absolute;
+	top: 0px;
+	right: 5px;
+	color: black;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+#big a{
+	top: 70px;
+	cursor: pointer;
+	color: black;
+	margin: 5px;
+}
+
+.prev{
+	position: relative;
+	float: left;
+}
+.next{
+	position: relative;
+	float: right;
+}
+/*-------------- scroll ------------------- */
+::-webkit-scrollbar{
+	width: 5px;
+	height: 0px;
+	border-radius: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
 /* Go from zero to full opacity */
 @keyframes fadeEffect {
     from {opacity: 0;}
