@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="softkeys-0.0.1.css">
 	<script src="javascript/jquery-3.3.1.js"></script>
 
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+
 	<script type="text/javascript">
 		var display_element;
 
@@ -168,28 +170,31 @@
 						<img id="battery" src="imagens_icons/icons8-phone-battery-full-50-2.png" alt="icon_bateria" />
 					</div>	
 
-					<table id="icons">
-						<tr>
-							<td>
-								<a href="" onclick="openScreen(event, 'perfil')"><i class="far fa-user"></i></a>
-								<span>Perfil</span>
-							</td>
-							<td>
+					<div id="icons">
+						<div>
+							<div>
+								<a href="" onclick="openScreen(event, 'profile')"><i class="far fa-user"></i></a>
+								<span>Profile</span>
+							</div>
+							
+							<div>
 								<a href="" onclick="openScreen(event, 'search')"><i class="fas fa-search"></i></a>
-								<span>Locais</span>
-							</td>
-						</tr>
-						<tr>
-							<td>
+								<span>Procurar</span>
+							</div>
+						</div>
+						<div>
+							<div>
 								<a href="" onclick="openScreen(event, 'shopping')"><i class="fas fa-shopping-cart"></i></a>
 								<span>Comprar</span>
-							</td>
-							<td>
+							</div>
+							
+							<div>
 								<a href="" onclick="openScreen(event, 'meetup')"><i class="fas fa-users"></i></a>
 								<span>MeetUp</span>
-							</td>
-						</tr>
-					</table>
+							</div>
+						</div>
+						
+					</div>
 
 					<div id="perfil" class="tab">
 						<span id="previous" ></span>
@@ -198,12 +203,12 @@
 							<a class="back" href="" onclick="backToScreen(event, 'perfil')"><i class="fas fa-arrow-circle-left"></i></a>
 						</p>
 					</div>
-					<div id="search" class="tab">
+					<div id="search" class="tab">  			<!--FIXME-->
 						<span id="previous" ></span>
 						<!--p>search screen</p>-->
-						<form class="row form">
-	                        <div class="col-xs-12 form-group">
-	                            <input type="text" name="code" class="form-control input-lg">
+						<form id="textBox"class="row form">
+	                        <div class="col-sm-offset-1 col-xs-10 form-group form-group-sm">
+	                            <input type="text" name="code" class="form-control input-sm">
 	                        </div>
 
 	                        <div class="softkeys" data-target="input[name='code']"></div>
