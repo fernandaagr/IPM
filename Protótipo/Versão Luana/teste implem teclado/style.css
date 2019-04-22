@@ -160,7 +160,7 @@ p{
 }
 #icons a{
 	z-index: 10;
-	border: 1px #D3D3D3 solid;
+	border: 1px #000099 solid; /*#D3D3D3*/
 	border-radius: 3px;
 	padding: 5px;
 	font-size: 25px;

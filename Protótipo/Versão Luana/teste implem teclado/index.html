@@ -16,9 +16,6 @@
 	<script type="text/javascript">
 		var display_element;
 
-		var tNow;
-		var tMin;
-		var tHour;
 		var t;
 		var time;
 		function start_time(){
@@ -32,9 +29,6 @@
 			
 			document.getElementById("clock_display").innerHTML = h + ":" + m;
 			document.getElementById("spanClock").innerHTML = h + ":" + m;
-			
-			//tNow = m + h*100;
-			//console.log("tNow = m + h*100 ="+ tNow);
 			
 			t = setTimeout(start_time, 500);
 		}
@@ -132,7 +126,7 @@
 </head>
 <body onload="start_display()">
 	<div class="mycontainer">  
-		<img id="deviceFrame" src="imagens_icons/device.png" usemap="#image-map">
+		<img id="deviceFrame" src="imagens_icons/device2.png" usemap="#image-map">
 		<map name="image-map">
 			<area id="homeBtn" alt="lock" title="lock" shape="rect" coords="20,0,58,11" ondblclick="lockScreen()">
 		</map>
@@ -171,30 +165,24 @@
 					</div>	
 
 					<div id="icons">
-						<div>
-							<div>
-								<a href="" onclick="openScreen(event, 'profile')"><i class="far fa-user"></i></a>
-								<span>Profile</span>
-							</div>
+						<div class="row" style="padding-top: 10px; border-color: black;">
 							
-							<div>
+								<a href="" onclick="openScreen(event, 'profile')"><i class="far fa-user"></i></a>
+								<span>Profile</span>							
+
 								<a href="" onclick="openScreen(event, 'search')"><i class="fas fa-search"></i></a>
 								<span>Procurar</span>
-							</div>
 						</div>
-						<div>
-							<div>
+
+						<div class="row" style="padding-top: 10px; border-color: black;">
 								<a href="" onclick="openScreen(event, 'shopping')"><i class="fas fa-shopping-cart"></i></a>
 								<span>Comprar</span>
-							</div>
 							
-							<div>
 								<a href="" onclick="openScreen(event, 'meetup')"><i class="fas fa-users"></i></a>
 								<span>MeetUp</span>
-							</div>
 						</div>
 						
-					</div>
+					</div> <!--end icons-->
 
 					<div id="perfil" class="tab">
 						<span id="previous" ></span>
@@ -208,7 +196,7 @@
 						<!--p>search screen</p>-->
 						<div class="row">
 							<form id="textBox"class="row form">
-		                        <div class="col-xs-offset-0.5 col-xs-3 form-group form-group-xs">
+		                        <div class="col-xs-offset-1 col-xs-3 form-group form-group-xs">
 		                            <input type="text" name="code" class="form-control input-sm">
 		                        </div>
 	                    	</form>
