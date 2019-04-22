@@ -203,19 +203,20 @@
 							<a class="back" href="" onclick="backToScreen(event, 'perfil')"><i class="fas fa-arrow-circle-left"></i></a>
 						</p>
 					</div>
-					<div id="search" class="tab">  			<!--FIXME-->
+					<div id="search" class="tab container">  			<!--FIXME-->
 						<span id="previous" ></span>
 						<!--p>search screen</p>-->
-						<form id="textBox"class="row form">
-	                        <div class="col-sm-offset-1 col-xs-10 form-group form-group-sm">
-	                            <input type="text" name="code" class="form-control input-sm">
-	                        </div>
-
-	                        <div class="softkeys" data-target="input[name='code']"></div>
-                    	</form>
-						<button id="btSearch" class="search-buttons">Search</button>
-							
-					
+						<div class="row">
+							<form id="textBox"class="row form">
+		                        <div class="col-xs-offset-0.5 col-xs-3 form-group form-group-xs">
+		                            <input type="text" name="code" class="form-control input-sm">
+		                        </div>
+	                    	</form>
+							<button id="btSearch" class="search-buttons">Search</button>
+						</div>
+						<div class="row">
+							<div class="softkeys" data-target="input[name='code']"></div>
+						</div>
 						<div id="show-results">
 							<!--lista dos resultados-->
 							<ul id="results">
