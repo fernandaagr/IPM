@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/all.min.css">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="softkeys-0.0.1.css">
+	<script src="javascript/jquery-3.3.1.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+
+
+	<script type="text/javascript">
+		var display_element;
+
+		var t;
+		var time;
+		function start_time(){
+			var today = new Date();
+			var h = today.getHours();
+			var m = today.getMinutes();
+
+			h = checkTime(h);
+			m = checkTime(m);
+
+			
+			document.getElementById("clock_display").innerHTML = h + ":" + m;
+			document.getElementById("spanClock").innerHTML = h + ":" + m;
+			
+			t = setTimeout(start_time, 500);
+		}
+
+		function checkTime(i) {
+		    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+		    return i;
+		}
+
+		function start_display(){
+			start_time();
+
+		}
+
+		function lockScreen(){
+			//document.getElementById("display").style.display = "none";
+			event.preventDefault();
+			$("#unlocked").css("display", "none");
+			document.getElementById('locked').style.display = "block";
+		}
+
+		function unlockScreen(){
+			event.preventDefault();
+			document.getElementById("locked").style.display = "none";
+			document.getElementById('unlocked').style.display = "block";
+			/*
+			$('#locked').fadeOut();
+			$('#display').fadeIn();
+				*/
+		}
+
+		function openScreen(event, screen){
+
+			event.preventDefault();
+			document.getElementById("previous").innerHTML = ""+screen;
+			document.getElementById('icons').style.display = "none";
+			//document.getElementById(screen).style.display = "block";
+			console.log(screen);
+
+			// Declare all variables
+		    var i, tab;
+
+		    // Get all elements with class="tabcontent" and hide them
+		    tab = document.getElementsByClassName("tab");
+		    for (i = 0; i < tab.length; i++) {
+		        tab[i].style.display = "none";
+		    }
+
+		    // Show the current tab, and add an "active" class to the button that opened the tab
+		    document.getElementById(screen).style.display = "block";
+
+		}
+
+		function backToScreen(event, current){
+			
+			event.preventDefault();
+			var previousScreen = document.getElementById("previous").innerHTML;
+			console.log(previousScreen);
+			document.getElementById(current).style.display = "none";
+			if (previousScreen == current) {
+				document.getElementById("icons").style.display = "flex";
+			}else{
+				document.getElementById(previousScreen).style.display = "block";
+			}
+			
+			
+		}
+
+		$(document).ready(function(){
+			console.log("page loaded");
+			$('#locked').click(function(event) {
+				event.preventDefault();
+				unlockScreen();				
+			});
+			$('#unlocked').click(function(){
+				//lockScreen();				
+			});
+			$('#homeBtn').click(function(){
+				console.log("clicou");
+				var isLocked = $('#locked').css('display');
+
+			    if(isLocked == "none"){
+					// Get all elements with class="tab" and hide them
+					tab = document.getElementsByClassName("tab");
+					for (i = 0; i < tab.length; i++) {
+						tab[i].style.display = "none";
+					}
+					document.getElementById("icons").style.display = "flex";   
+			    }else{
+			    	console.log("its locked");
+			    }
+			});
+		});
+	</script>
+</head>
+<body onload="start_display()">
+
+	
+	
+	<div class="mycontainer"> 
+
+		<!--botao home / lock screen-->	
+		<div id="homeLockBtn">
+			<button type="button" class="btn btn-dark btn-md" id="homeBtn" ondblclick="lockScreen()">HOME/LOCK</button> 
+		</div>
+
+		<!-- <img id="deviceFrame" src="imagens_icons/device.png" 	 usemap="#image-map">
+		<map name="image-map">
+			<area id="homeBtn" alt="lock" title="lock" shape="rect" coords="20,0,58,11" ondblclick="lockScreen()">
+		</map> -->
+
+		<div class="device">
+			<!--botao home>
+			<div id="home" class="default">
+				<button id="homeBtn"><i class="fas fa-home"></i></button>
+			</div-->
+
+			<div id="locked" class="default screen">
+				<div id="onScreen">
+
+					<div id="status_bar" class="status_bar">
+						<img id="battery" src="imagens_icons/icons8-phone-battery-full-50-2.png" alt="icon_bateria" />
+					</div>	
+
+					<div id="clock_display" align="center">
+
+					</div>
+
+					<div id="locked-icon">
+						<p>
+							<i class="fas fa-lock"></i>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div id="unlocked" class="default screen">
+				<div id="onScreen">
+					<div id="status_bar" class="status_bar">
+						<span id="spanClock"></span>
+						<img id="battery" src="imagens_icons/icons8-phone-battery-full-50-2.png" alt="icon_bateria" />
+					</div>	
+
+					<div id="icons">
+						<div class="row" style="padding-top: 10px; border-color: black;">
+							
+								<a href="" onclick="openScreen(event, 'profile')"><i class="far fa-user"></i></a>
+								<span>Profile</span>							
+
+								<a href="" onclick="openScreen(event, 'search')"><i class="fas fa-search"></i></a>
+								<span>Procurar</span>
+						</div>
+
+						<div class="row" style="padding-top: 10px; border-color: black;">
+								<a href="" onclick="openScreen(event, 'shopping')"><i class="fas fa-shopping-cart"></i></a>
+								<span>Comprar</span>
+							
+								<a href="" onclick="openScreen(event, 'meetup')"><i class="fas fa-users"></i></a>
+								<span>MeetUp</span>
+						</div>
+						
+					</div> <!--end icons-->
+
+					<div id="perfil" class="tab">
+						<span id="previous" ></span>
+						<!--p>profile screen</p-->
+						<p>
+							<a class="back" href="" onclick="backToScreen(event, 'perfil')"><i class="fas fa-arrow-circle-left"></i></a>
+						</p>
+					</div>
+					<div id="search" class="tab">
+						
+						<p>search screen</p>
+						<!-- search area -->
+						<div class="search-items">
+							<input type="search" name="" id="search-input">
+							<button id="btSearch" class="search-buttons">Search</button>
+							
+						</div>
+						<div id="show-results">
+							<!--lista dos resultados-->
+							<ul id="results">
+
+							</ul>
+						</div>
+						<p>
+							<a class="back" href="" onclick="backToScreen(event, 'search')"><i class="fas fa-arrow-circle-left"></i></a>
+						</p>
+					</div>
+					<div id="shopping" class="tab">
+						<span id="previous"></span>
+						<!--p>shopping screen</p-->
+						<p>
+							<a class="back" href="" onclick="backToScreen(event, 'shopping')"><i class="fas fa-arrow-circle-left"></i></a>
+						</p>
+					</div>
+					<div id="images" class="tab">
+						<span id="previous"></span>
+						<!--p>images screen</p-->
+						<p>
+							<a class="back" href="" onclick="backToScreen(event, 'images')"><i class="fas fa-arrow-circle-left"></i></a>
+						</p>
+					</div>
+					<div id="meetup" class="tab">
+						<span id="previous"></span>
+						<!--p>meetup screen</p-->
+						<p>
+							<a class="back" href="" onclick="backToScreen(event, 'meetup')"><i class="fas fa-arrow-circle-left"></i></a>
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script type="text/javascript" src="javascript/search.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="softkeys-0.0.1.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('.softkeys').softkeys({
+                    target : $('.softkeys').data('target'),
+                    layout : [
+                        [
+                            ['`','~'],
+                            ['1','!'],
+                            ['2','@'],
+                            ['3','#'],
+                            ['4','$'],
+                            ['5','%'],
+                            ['6','^'],
+                            ['7','&amp;'],
+                            ['8','*'],
+                            ['9','('],
+                            ['0',')'],
+                            ['-', '_'],
+                            ['=','+'],
+                            'delete'
+                        ],
+                        [
+                            'q','w','e','r','t','y','u','i','o','p',
+                            ['[','{'],
+                            [']','}']
+                        ],
+                        [
+                            'capslock',
+                            'a','s','d','f','g','h','j','k','l',
+                            [';',':'],
+                            ["'",'&quot;'],
+                            ['\\','|']
+                        ],
+                        [
+                            'shift',
+                            'z','x','c','v','b','n','m',
+                            [',','&lt;'],
+                            ['.','&gt;'],
+                            ['/','?'],
+                            ['@']
+                        ]
+                    ]
+                });
+            });
+        </script>
+</body>
+</html>
