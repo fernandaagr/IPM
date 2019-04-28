@@ -2,7 +2,6 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -16,119 +15,8 @@
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
 
-
-	<script type="text/javascript">
-		var display_element;
-
-		var t;
-		var time;
-		function start_time(){
-			var today = new Date();
-			var h = today.getHours();
-			var m = today.getMinutes();
-
-			h = checkTime(h);
-			m = checkTime(m);
-
-			
-			document.getElementById("clock_display").innerHTML = h + ":" + m;
-			document.getElementById("spanClock").innerHTML = h + ":" + m;
-			
-			t = setTimeout(start_time, 500);
-		}
-
-		function checkTime(i) {
-		    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-		    return i;
-		}
-
-		function start_display(){
-			start_time();
-
-		}
-
-		function lockScreen(){
-			//document.getElementById("display").style.display = "none";
-			event.preventDefault();
-			$("#unlocked").css("display", "none");
-			document.getElementById('locked').style.display = "block";
-		}
-
-		function unlockScreen(){
-			event.preventDefault();
-			document.getElementById("locked").style.display = "none";
-			document.getElementById('unlocked').style.display = "block";
-			/*
-			$('#locked').fadeOut();
-			$('#display').fadeIn();
-				*/
-		}
-
-		function openScreen(event, screen){
-
-			event.preventDefault();
-			document.getElementById("previous").innerHTML = ""+screen;
-			document.getElementById('icons').style.display = "none";
-			//document.getElementById(screen).style.display = "block";
-			console.log(screen);
-
-			// Declare all variables
-		    var i, tab;
-
-		    // Get all elements with class="tabcontent" and hide them
-		    tab = document.getElementsByClassName("tab");
-		    for (i = 0; i < tab.length; i++) {
-		        tab[i].style.display = "none";
-		    }
-
-		    // Show the current tab, and add an "active" class to the button that opened the tab
-		    document.getElementById(screen).style.display = "block";
-
-		}
-
-		function backToScreen(event, current){
-			
-			event.preventDefault();
-			var previousScreen = document.getElementById("previous").innerHTML;
-			console.log(previousScreen);
-			document.getElementById(current).style.display = "none";
-			if (previousScreen == current) {
-				document.getElementById("icons").style.display = "flex";
-			}else{
-				document.getElementById(previousScreen).style.display = "block";
-			}
-			
-			
-		}
-
-		$(document).ready(function(){
-			console.log("page loaded");
-			$('#locked').click(function(event) {
-				event.preventDefault();
-				unlockScreen();				
-			});
-			$('#unlocked').click(function(){
-				//lockScreen();				
-			});
-			$('#homeBtn').click(function(){
-				console.log("clicou");
-				var isLocked = $('#locked').css('display');
-
-			    if(isLocked == "none"){
-					// Get all elements with class="tab" and hide them
-					tab = document.getElementsByClassName("tab");
-					for (i = 0; i < tab.length; i++) {
-						tab[i].style.display = "none";
-					}
-					document.getElementById("icons").style.display = "flex";   
-			    }else{
-			    	console.log("its locked");
-			    }
-			});
-		});
-	</script>
-	<!--funcao para mostrar o teclado-->
-	<script type="text/javascript" src="onkdKeyboard.js"></script>
+	<script type="text/javascript" src="funcoes.js"></script>
+	
 </head>
 
 <body onload="start_display()">
@@ -199,17 +87,18 @@
 					</div> <!--end icons-->
 
 					<div id="perfil" class="tab">
-						<span id="previous" ></span>
+						<span id="previous"></span>
 						<!--p>profile screen</p-->
 						<p>
-							<a class="back" href="" onclick="backToScreen(event, 'perfil')"><i class="fas fa-arrow-circle-left"></i></a>
+							<a class="back" href="" onclick="backToScreen(event, 'perfil')"><i class="fas fa-arrow-circle-right"></i></a>
 						</p>
 					</div>
+
 					<div id="search" class="tab">  			<!--FIXME-->
 						<span id="previous" ></span>
 						<!--p>search screen</p>-->
 						<div class="search-items">
-		                    <input type="search" name="" id="search-input" oninput="showKeyboard(this)">
+		                    <input type="search" name="" id="search-input" onclick="showKeyboard(this)">
 	                    	</form>
 							<button id="btSearch" class="search-buttons">Search</button>
 						</div>
@@ -223,28 +112,31 @@
 							</ul>
 						</div>
 						<p>
-							<a class="back" href="" onclick="backToScreen(event, 'search')"><i class="fas fa-arrow-circle-left"></i></a>
+							<a class="back" href="" onclick="backToScreen(event, 'search')"><i class="fas fa-arrow-circle-right"></i></a>
 						</p>
 					</div>
+
 					<div id="shopping" class="tab">
 						<span id="previous"></span>
 						<!--p>shopping screen</p-->
 						<p>
-							<a class="back" href="" onclick="backToScreen(event, 'shopping')"><i class="fas fa-arrow-circle-left"></i></a>
+							<a class="back" href="" onclick="backToScreen(event, 'shopping')"><i class="fas fa-arrow-circle-right"></i></a>
 						</p>
 					</div>
-					<div id="images" class="tab">
+
+					<!--<div id="images" class="tab">
 						<span id="previous"></span>
-						<!--p>images screen</p-->
+						<!-> <p>images screen</p> ->
 						<p>
-							<a class="back" href="" onclick="backToScreen(event, 'images')"><i class="fas fa-arrow-circle-left"></i></a>
+							<a class="back" href="" onclick="backToScreen(event, 'images')"><i class="fas fa-arrow-circle-right"></i></a>
 						</p>
-					</div>
+					</div>-->
+
 					<div id="meetup" class="tab">
 						<span id="previous"></span>
 						<!--p>meetup screen</p-->
 						<p>
-							<a class="back" href="" onclick="backToScreen(event, 'meetup')"><i class="fas fa-arrow-circle-left"></i></a>
+							<a class="back" href="" onclick="backToScreen(event, 'meetup')"><i class="fas fa-arrow-circle-right"></i></a>
 						</p>
 					</div>
 				</div>
