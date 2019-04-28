@@ -159,9 +159,23 @@ function showKeyboard(obj){
     $(strid+":last-child").after("<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></script>\n<script type=\"text/javascript\" src=\"js/keyboard.js\"></script>");
 
     $("head").append("<link rel=\"stylesheet\" type=\"text/css\" href=\"kbd.css\">");
-  }
+  }  
 }
 
+//se o botao back for clickado apagar codigo html para o keyboard
+function clearKbd(current){
+  console.log("clear kbd function");
+  
+  var scrId = document.getElementById("search-input");
+
+  event.preventDefault();
+  var previousScreen = document.getElementById("previous").innerHTML;
+  console.log(previousScreen);
+  document.getElementById(current).style.display = "none";
+  if (previousScreen != current) {
+    $(scrId).empty(); //apaga os filhos, nesse caso o codigo relativo ao teclado
+  }
+}
 
 
 $(function(){

@@ -99,12 +99,10 @@
 						<!--p>search screen</p>-->
 						<div class="search-items">
 		                    <input type="search" name="" id="search-input" onclick="showKeyboard(this)">
-	                    	</form>
+	                    	
 							<button id="btSearch" class="search-buttons">Search</button>
 						</div>
-						<!--<div class="row">
-							<div class="softkeys" data-target="input[name='code']"></div>
-						</div> -->
+					
 						<div id="show-results">
 							<!--lista dos resultados-->
 							<ul id="results">
@@ -112,7 +110,7 @@
 							</ul>
 						</div>
 						<p>
-							<a class="back" href="" onclick="backToScreen(event, 'search')"><i class="fas fa-arrow-circle-right"></i></a>
+							<a class="back" href="" onclick="backToScreen(event, 'search'); clearKbd('search');"><i class="fas fa-arrow-circle-right"></i></a>
 						</p>
 					</div>
 
