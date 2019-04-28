@@ -1,0 +1,51 @@
+#display{
+	height: 5.382cm;
+	width: 10.7763cm;
+	font-family: Ubuntu;
+	font-style: medium;
+	font-size: 38px;
+	background: linear-gradient(to bottom, #99e6e6, #85e085);
+	/* background-color: #99e6e6; */
+	align-self: center;
+	position: relative;
+	border-radius: 5px;
+	z-index: -1;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#clock_display{
+	font-size: 80px;
+	position: relative;
+}
+
+#battery{
+	max-width:100%;
+	max-height:100%;
+	display: block;
+	margin: auto;
+	float: right;
+	padding-right: 20px;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 1;
+
+}
+.status_bar {
+	height: 25px;
+	margin: 0 ;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	background: black;
+	padding: 0px;
+	vertical-align: middle;
+	z-index: -1;
+}
+#homeBtn{
+	color: #000000;
+	cursor: pointer;
+	font-weight: bold;
+	width: 150px;
+	height: 150px;
+}

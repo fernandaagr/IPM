@@ -26,7 +26,8 @@
 	border-width: 10px;
 	align-items: center;
 	justify-content: center;
-	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	position: relative;
 	align-content: center;
 	left: 14px;
@@ -203,12 +204,15 @@ p{
 	color: black;
 	font-size: 16px;
 	text-decoration: none;
+	position: absolute;
+	bottom: 15px;
+	right: 15px;
 	align-items: center;
 }
 
 /*-------- search screen -----------*/
 #search-input{
-	width: 50%;
+	width: 70%;
 	height: 25px;
 	margin-right: auto;
 	margin-left: auto;
