@@ -72,8 +72,8 @@
 								<a href="" onclick="openScreen(event, 'profile')"><i class="far fa-user"></i></a>
 								<span>Profile</span>							
 
-								<a href="" onclick="openScreen(event, 'search')"><i class="fas fa-search"></i></a>
-								<span>Procurar</span>
+								<a href="" onclick="openScreen(event, 'search')"><i class="fas fa-atlas"></i></a>
+								<span>Locais</span>
 						</div>
 
 						<div class="row" style="padding-top: 10px; border-color: black;">
@@ -94,19 +94,59 @@
 						</p>
 					</div>
 
-					<div id="search" class="tab">  			<!--FIXME-->
+					<div id="search" class="tab">  			
 						<span id="previous" ></span>
 						<!--p>search screen</p>-->
 						<div class="search-items">
-		                    <input type="search" name="" id="search-input" onclick="showKeyboard(this)">
-	                    	
-							<button id="btSearch" class="search-buttons">Search</button>
+		                    <input id="search-input" type="text" class="form-control" name="" placeholder="pesquisar local...">
+			                <span class="input-group-btn">
+			                    <button id="btSearch" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+			                </span>
+
 						</div>
 					
 						<div id="show-results">
 							<!--lista dos resultados-->
-							<ul id="results">
+							<ul id="results-restaurantes" class="results" style="visibility: hidden;">
+								<li>
+									<div></div>
+								</li>
+								<li>
+									<div></div>
+								</li>
+								<li>
+									<div></div>
+								</li>
+								<li>
+									<div></div>
+								</li>
+								<li>
+									<div></div>
+								</li>
+								<li>
+									<div></div>
+								</li>
+							</ul>
 
+							<ul id="results-shopping" class="results" style="visibility: hidden;">
+								<li>
+									<div></div>
+								</li>
+								<li>
+									<div></div>
+								</li>
+								<li>
+									<div></div>
+								</li>
+								<li>
+									<div></div>
+								</li>
+								<li>
+									<div></div>
+								</li>
+								<li>
+									<div></div>
+								</li>
 							</ul>
 						</div>
 						<p>
@@ -117,15 +157,15 @@
 					<div id="shopping" class="tab">
 						<span id="previous"></span>
 						<!--p>shopping screen</p-->
-							<div class="row">    
+						<div class="row">    
 					        <div class="col-xs-8 col-xs-offset-2">
 							    <div class="input-group">
 					                <div class="input-group-btn search-panel">
 					                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-					                    	<span id="search_concept">Filter by</span> <span class="caret"></span>
+					                    	<span id="search_concept">Filter</span> <span class="caret"></span>
 					                    </button>
 					                    <ul class="dropdown-menu" role="menu">
-					                      <li><a href="#contains">Contains</a></li>
+					                      <li><a href="#contains"></a></li>
 					                      <li><a href="#its_equal">It's equal</a></li>
 					                      <li><a href="#greather_than">Greather than ></a></li>
 					                      <li><a href="#less_than">Less than < </a></li>
@@ -134,7 +174,7 @@
 					                    </ul>
 					                </div>
 					                <input type="hidden" name="search_param" value="all" id="search_param">         
-					                <input type="text" class="form-control" name="x" placeholder="Search term...">
+					                <input type="text" class="form-control" name="x" placeholder="procurar bilhete...">
 					                <span class="input-group-btn">
 					                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
 					                </span>
@@ -142,8 +182,16 @@
 					        </div>
 						</div>
 
-
-
+						<div id="results-tickets">
+							<ul id="danca">
+								<li><div></div></li>
+								<li><div></div></li>
+								<li><div></div></li>
+								<li><div></div></li>
+								<li><div></div></li>
+								<li><div></div></li>
+							</ul>
+						</div>
 
 
 
@@ -165,52 +213,6 @@
 		</div>
 	</div>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <!--<script src="softkeys-0.0.1.js"></script> 
-
-        <script>
-            $(document).ready(function(){
-                $('.softkeys').softkeys({
-                    target : $('.softkeys').data('target'),
-                    layout : [
-                        [
-                            ['`','~'],
-                            ['1','!'],
-                            ['2','@'],
-                            ['3','#'],
-                            ['4','$'],
-                            ['5','%'],
-                            ['6','^'],
-                            ['7','&amp;'],
-                            ['8','*'],
-                            ['9','('],
-                            ['0',')'],
-                            ['-', '_'],
-                            ['=','+'],
-                            'delete'
-                        ],
-                        [
-                            'q','w','e','r','t','y','u','i','o','p',
-                            ['[','{'],
-                            [']','}']
-                        ],
-                        [
-                            'capslock',
-                            'a','s','d','f','g','h','j','k','l',
-                            [';',':'],
-                            ["'",'&quot;'],
-                            ['\\','|']
-                        ],
-                        [
-                            'shift',
-                            'z','x','c','v','b','n','m',
-                            [',','&lt;'],
-                            ['.','&gt;'],
-                            ['/','?'],
-                            ['@']
-                        ]
-                    ]
-                });
-            });
-        </script> -->
+    
 </body>
 </html>

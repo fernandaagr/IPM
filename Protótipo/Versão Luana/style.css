@@ -212,17 +212,22 @@ p{
 
 /*-------- search screen -----------*/
 #search-input{
-	width: 70%;
-	height: 25px;
+	width: 100px;
+	height: 34px;
 	margin-right: auto;
 	margin-left: auto;
-	border: 1px solid #444;
-	border-radius: 5px;
-	background-color: #d0e9ed;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: #fff;
 	-webkit-appearance: none;
   	outline: none;
   	padding-left: 10px;
+	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
+
+
 .search-buttons{
 	height: 25px;
 	border: 1px solid #444;
