@@ -120,9 +120,10 @@ function showKeyboard(obj){
     var strid = "#"+obj.id;
     console.log("strid="+strid);
 
-    var conteudo = "<ul id=\"keyboard\">\n";
+    var myulist = document.createElement('ul');
+    myulist.id = "keyboard";
 
-    conteudo = conteudo.concat("<li class=\"symbol\"><span class=\"off\">`</span><span class=\"on\">~</span></li>\n");
+    var conteudo = conteudo.concat("<li class=\"symbol\"><span class=\"off\">`</span><span class=\"on\">~</span></li>\n");
     conteudo = conteudo.concat("<li class=\"symbol\"><span class=\"off\">1</span><span class=\"on\">!</span></li>\n");
     conteudo = conteudo.concat("<li class=\"symbol\"><span class=\"off\">2</span><span class=\"on\">@</span></li>\n");
     conteudo = conteudo.concat("<li class=\"symbol\"><span class=\"off\">3</span><span class=\"on\">#</span></li>\n");
@@ -153,12 +154,16 @@ function showKeyboard(obj){
     conteudo = conteudo.concat("<li class=\"letter\">m</li>\n<li class=\"symbol\"><span class=\"off\">,</span><span class=\"on\">&lt;</span></li>\n");
     conteudo = conteudo.concat("<li class=\"symbol\"><span class=\"off\">.</span><span class=\"on\">&gt;</span></li>\n");
     conteudo = conteudo.concat("<li class=\"symbol\"><span class=\"off\">/</span><span class=\"on\">?</span></li>\n");
-    conteudo = conteudo.concat("<li class=\"right-shift lastitem\">shift</li>\n<li class=\"space lastitem\">&nbsp;</li>\n</ul>");
+    conteudo = conteudo.concat("<li class=\"right-shift lastitem\">shift</li>\n<li class=\"space lastitem\">&nbsp;</li>\n");
 
-    $(strid).append(conteudo);
+    myulist.innerHTML = conteudo;
+
+    $(strid).append(myulist);
     $(strid+":last-child").after("<script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></script>\n<script type=\"text/javascript\" src=\"js/keyboard.js\"></script>");
 
-    $("head").append("<link rel=\"stylesheet\" type=\"text/css\" href=\"kbd.css\">");
+
+    document.head.innerHTML.append("<link rel=\"stylesheet\" type=\"text/css\" href=\"kbd.css\">");
+    document.getElementById("#keyboard").style.display = 'inline-block';
   }  
 }
 
